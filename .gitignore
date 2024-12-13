@@ -1,0 +1,8 @@
+# cobol compiled files
+*.o
+
+# cobol accountsystem program
+accountsystem
+
+# node_modules
+node_modules/

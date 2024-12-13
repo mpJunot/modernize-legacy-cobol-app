@@ -21,11 +21,11 @@
 
                EVALUATE USER-CHOICE
                    WHEN 1
-                       CALL 'OperationsProgram' USING 'TOTAL '
+                       CALL 'Operations' USING 'TOTAL '
                    WHEN 2
-                       CALL 'OperationsProgram' USING 'CREDIT'
+                       CALL 'Operations' USING 'CREDIT'
                    WHEN 3
-                       CALL 'OperationsProgram' USING 'DEBIT '
+                       CALL 'Operations' USING 'DEBIT '
                    WHEN 4
                        MOVE 'NO' TO CONTINUE-FLAG
                    WHEN OTHER

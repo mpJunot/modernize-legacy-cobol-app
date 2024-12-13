@@ -179,7 +179,9 @@ sequenceDiagram
 ## Generate a test plan
 
 ```markdown
-@workspace The current Cobol app has no tests. Can you please create a test plan of current business logic that I can use to validate with business stakeholders about the current implementation. Later I would like to use this test plan to create unit and integration tests in a node.js app. I am in the middle of transforming the current Cobol app to a node.js app. The test plan should include the following:
+@workspace The current Cobol app has no tests. Can you please create a test plan of current business logic that I can use to validate with business stakeholders about the current implementation.
+Later I would like to use this test plan to create unit and integration tests in a node.js app. I am in the middle of transforming the current Cobol app to a node.js app.
+The test plan should include the following:
 
 1. Test Case ID
 2. Test Case Description
@@ -221,9 +223,9 @@ node main.js
 ### Generate unit and integration tests
 
 ```text
-@workspace I would like to create unit and integration tests cases form the test plan mentioned in 
+@workspace I would like to create unit and integration tests cases form the test plan mentioned in
 #file:TESTPLAN.md file The node.js code is in node-accounting-app folder and I am looking to generate tests
-for #file:operations.js file. Use a popular testing framework and also provide all the dependencies required to run the tests. 
+for #file:operations.js file. Use a popular testing framework and also provide all the dependencies required to run the tests.
 ```
 
 ## License

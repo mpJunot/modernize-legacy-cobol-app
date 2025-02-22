@@ -8,8 +8,7 @@
   "customizations": {
       "vscode": {
       "extensions": [
-          "github.copilot", // GitHub Copilot
-          "github.copilot-chat", // GitHub Copilot Chat
+          "github.copilot@insiders", // GitHub Copilot + Copilot Chat insiders
           "markdown-lint.markdownlinter", // Markdown linter
           "bierner.markdown-mermaid", // Mermaid Markdown extension
           "bitlang.cobol", // COBOL extension

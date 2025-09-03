@@ -1,0 +1,11 @@
+{
+  "initial": 1000.00,
+  "steps": [
+    { "op": "total", "expect": 1000.00 },
+    { "op": "credit", "amount": 100.00, "expect": 1100.00 },
+    { "op": "credit", "amount": 0.00, "expect": 1100.00 },
+    { "op": "debit", "amount": 50.00, "expect": 1050.00 },
+    { "op": "debit", "amount": 2000.00, "expect_error": "Insufficient funds" },
+    { "op": "debit", "amount": 0.00, "expect": 1050.00 }
+  ]
+}

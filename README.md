@@ -55,7 +55,7 @@ This COBOL program simulates an account management system. This program will inv
 If you don't already have a COBOL compiler, you'll need to install one. Common COBOL compiler is GnuCOBOL: An open-source COBOL compiler. To Install , use brew:
 
 ```bash
-brew install gnucobol 
+brew install gnucobol
 ```
 
 - Option 2: Open the terminal in the GitHub codespace or Ubuntu Linux system and run the following command to install the COBOL compiler:
@@ -91,7 +91,7 @@ Account Management System
 3. Debit Account
 4. Exit
 --------------------------------
-Enter your choice (1-4): 
+Enter your choice (1-4):
 ```
 
 - User Chooses to View Balance:
@@ -146,14 +146,14 @@ sequenceDiagram
     User->>MainProgram: Start Application
     MainProgram->>User: Display Menu
     User->>MainProgram: Select Option (1-4)
-    
+
     alt View Balance
         MainProgram->>Operations: CALL 'Operations' USING 'TOTAL'
         Operations->>DataProgram: CALL 'DataProgram' USING 'READ', FINAL-BALANCE
         DataProgram-->>Operations: RETURN FINAL-BALANCE
         Operations->>User: DISPLAY "Current balance: " FINAL-BALANCE
     end
-    
+
     alt Credit Account
         MainProgram->>Operations: CALL 'Operations' USING 'CREDIT'
         Operations->>User: DISPLAY "Enter credit amount: "
@@ -165,7 +165,7 @@ sequenceDiagram
         DataProgram-->>Operations: RETURN
         Operations->>User: DISPLAY "Amount credited. New balance: " FINAL-BALANCE
     end
-    
+
     alt Debit Account
         MainProgram->>Operations: CALL 'Operations' USING 'DEBIT'
         Operations->>User: DISPLAY "Enter debit amount: "
@@ -181,7 +181,7 @@ sequenceDiagram
             Operations->>User: DISPLAY "Insufficient funds for this debit."
         end
     end
-    
+
     alt Exit Application
         MainProgram->>MainProgram: MOVE 'NO' TO CONTINUE-FLAG
         MainProgram->>User: DISPLAY "Exiting the program. Goodbye!"

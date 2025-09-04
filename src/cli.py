@@ -8,9 +8,13 @@ def fmt_balance(b):
     return f"{b:09.2f}"
 
 def input_check(amount):
-    if amount.isalpha() or float(amount) > 999999.99:
+    try:
+        amount = float(amount)
+    except ValueError:
         amount = 0.0
-    return abs(float(amount))
+    if amount > 999999.99:
+        amount = 0.0
+    return abs(amount)
 
 def main():
     data = DataProgram(1000.00)

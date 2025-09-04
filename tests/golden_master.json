@@ -6,6 +6,17 @@
     { "op": "credit", "amount": 0.00, "expect": 1100.00 },
     { "op": "debit", "amount": 50.00, "expect": 1050.00 },
     { "op": "debit", "amount": 2000.00, "expect_error": "Insufficient funds" },
-    { "op": "debit", "amount": 0.00, "expect": 1050.00 }
+    { "op": "debit", "amount": 0.00, "expect": 1050.00 },
+    { "op": "credit", "amount": "ff", "expect": 1050.00 },
+    { "op": "debit", "amount": "ff", "expect": 1050.00 },
+    { "op": "credit", "amount": -10, "expect": 1060.00 },
+    { "op": "debit", "amount": -5, "expect": 1055.00 },
+    { "op": "credit", "amount": "   ", "expect": 1055.00 },
+    { "op": "debit", "amount": "", "expect": 1055.00 },
+    { "op": "credit", "amount": 0.10, "expect": 1055.10 },
+    { "op": "credit", "amount": 0.20, "expect": 1055.30 },
+    { "op": "total", "expect": 1055.30 },
+    { "op": "debit", "amount": 1055.30, "expect": 0.00 },
+    { "op": "credit", "amount": 500000.00, "expect": 500000.00 }
   ]
 }

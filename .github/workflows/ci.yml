@@ -20,6 +20,16 @@ jobs:
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
 
+      - name: Install GnuCOBOL (for COBOL binary)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnucobol
+
+      - name: Build COBOL binary
+        run: |
+          cobc -x -o accountsystem main.cob operations.cob data.cob
+          ls -l accountsystem
+
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip

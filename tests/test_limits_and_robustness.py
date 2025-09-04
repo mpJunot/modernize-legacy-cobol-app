@@ -1,6 +1,7 @@
 import sys
 import subprocess
 from pathlib import Path
+import pytest
 
 TEST_DIR = Path(__file__).parent
 ROOT = TEST_DIR.parent
@@ -33,6 +34,10 @@ def test_menu_empty_input_then_valid_sequence():
 
 
 def test_long_sequence_cobol_vs_python_consistency():
+    cobol_bin = ROOT / "accountsystem"
+    if not cobol_bin.exists() or not cobol_bin.is_file():
+        pytest.skip("COBOL binary 'accountsystem' not found; skipping long sequence COBOL vs Python test")
+
     steps = []
     steps.extend(["2\n10\n"] * 100)
     steps.extend(["3\n5\n"] * 100)

@@ -5,7 +5,8 @@ on:
   pull_request:
 
 jobs:
-  test:
+  unit:
+    name: Unit tests (Python only)
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -19,21 +20,40 @@ jobs:
           python-version: ${{ matrix.python-version }}
       - name: Display Python version
         run: python -c "import sys; print(sys.version)"
-
-      - name: Install GnuCOBOL (for COBOL binary)
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y gnucobol
-
-      - name: Build COBOL binary
-        run: |
-          cobc -x -o accountsystem main.cob operations.cob data.cob
-          ls -l accountsystem
-
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
           if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+      - name: Run unit tests
+        run: |
+          # Run only Python-only test files
+          pytest -q tests/test_operations.py tests/test_invalid_inputs.py tests/test_precision.py
 
-      - name: Run tests
-        run: pytest -q
+  cobol-integration:
+    name: Integration tests (COBOL vs Python)
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Display Python version
+        run: python -c "import sys; print(sys.version)"
+      - name: Install GnuCOBOL (for COBOL binary)
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y gnucobol
+      - name: Build COBOL binary
+        run: |
+          cobc -x -o accountsystem main.cob operations.cob data.cob
+          ls -l accountsystem
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
+      - name: Run COBOL integration tests
+        run: |
+          # Run the tests that exercise COBOL vs Python behavior
+          pytest -q tests/test_golden_master_cobol_vs_python.py tests/test_limits_and_robustness.py
